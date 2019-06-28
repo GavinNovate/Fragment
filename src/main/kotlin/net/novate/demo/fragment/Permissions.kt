@@ -12,9 +12,7 @@ object Permissions {
         val code = coder.getAndIncrement()
         fragments[fragment.tag] = fragment
         fragment.requestPermission(code, permission)
-        requests[code] = { realFragment: Fragment, granted: Boolean ->
-            callback.invoke(fragments[realFragment.tag]!!, granted)
-        }
+        requests[code] = callback
     }
 
     fun onRequestPermission(fragment: Fragment, requestCode: Int, permission: String, granted: Boolean) {
