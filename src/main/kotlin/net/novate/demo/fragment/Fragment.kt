@@ -1,6 +1,6 @@
 package net.novate.demo.fragment
 
-abstract class Fragment(private val tag: String) {
+abstract class Fragment(val tag: String) {
 
     abstract fun onCreate()
 

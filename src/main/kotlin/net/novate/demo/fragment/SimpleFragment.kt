@@ -4,8 +4,8 @@ class SimpleFragment(tag: String) : Fragment(tag) {
 
     override fun onCreate() {
         println("SimpleFragment:${this.hashCode()} onCreate")
-        Permissions.requestPermission(this, "互联网权限") {
-            println("SimpleFragment:${this.hashCode()} Granted=$it")
+        Permissions.requestPermission(this, "互联网权限") { fragment: Fragment, granted: Boolean ->
+            println("SimpleFragment:${fragment.hashCode()} Granted=$granted")
         }
     }
 
@@ -15,6 +15,6 @@ class SimpleFragment(tag: String) : Fragment(tag) {
 
     override fun onRequestPermissionResult(requestCode: Int, permission: String, granted: Boolean) {
         println("SimpleFragment:${this.hashCode()} onRequestPermissionResult")
-        Permissions.onRequestPermission(requestCode, permission, granted)
+        Permissions.onRequestPermission(this, requestCode, permission, granted)
     }
 }
